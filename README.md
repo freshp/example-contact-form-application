@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/freshp/example-contact-form-application.svg?branch=master)](https://travis-ci.org/freshp/example-contact-form-application)
+
 ### Execute manual test of the formhandling
 1. start built in php server
 ```
