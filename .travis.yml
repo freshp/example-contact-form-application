@@ -1,0 +1,15 @@
+language: php
+
+php:
+  - 7.2
+  - 7.3
+
+sudo: false
+
+before_script:
+  - composer self-update
+  - composer install --no-interaction
+
+script:
+  - ./vendor/bin/phpunit.phar --configuration ./phpunit.xml
+  - ./vendor/bin/phpstan.phar analyse -l max ./src

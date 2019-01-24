@@ -1,0 +1,37 @@
+<div class="container">
+    <div class="row">
+        <div class="select-personal-data col-lg-10">
+            <h1>{{ 'contact-form'|trans }}</h1>
+            {{ form_errors(form) }}
+            {{ form_start(form,{'action': targetUrl, 'method':'post', 'attr': {
+                'id': 'contactForm',
+                'class':'form'
+            }}) }}
+
+            <div class="form-group">
+                {{ form_label(form.name) }}
+                {{ form_widget(form.name) }}
+                {{ form_errors(form.name) }}
+            </div>
+
+            <div class="form-group">
+                {{ form_label(form.email) }}
+                {{ form_widget(form.email) }}
+                {{ form_errors(form.email) }}
+            </div>
+
+            <div class="form-group">
+                {{ form_label(form.message) }}
+                {{ form_widget(form.message) }}
+                {{ form_errors(form.message) }}
+            </div>
+
+            <div class="submitButton">
+                <button type="submit" class="btn btn-primary pull-right form__submit">
+                    <span>{{ 'send'|trans }}</span>
+                </button>
+            </div>
+            {{ form_end(form) }}
+        </div>
+    </div>
+</div>
