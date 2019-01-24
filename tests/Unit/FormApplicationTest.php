@@ -1,6 +1,6 @@
 <?php
 
-namespace BuBi\CancelReservationForm\Tests\Unit;
+namespace FreshP\ContactFormApplication\Tests\Unit;
 
 use FreshP\ContactFormApplication\Factory\ViewConfigurationFactory;
 use FreshP\ContactFormApplication\FormApplication;

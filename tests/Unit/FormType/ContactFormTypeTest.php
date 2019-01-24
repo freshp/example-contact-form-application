@@ -1,6 +1,6 @@
 <?php
 
-namespace BuBi\CancelReservationForm\Tests\Unit\FormType\Driver;
+namespace FreshP\ContactFormApplication\Tests\Unit\FormType\Driver;
 
 use FreshP\ContactFormApplication\FormType\ContactFormType;
 use FreshP\ContactFormApplication\Statics\AppStatics;
