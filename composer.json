@@ -35,7 +35,7 @@
     "extra": {
         "tools": {
             "phpunit": {
-                "url": "https://phar.phpunit.de/phpunit-7.5.2.phar",
+                "url": "https://phar.phpunit.de/phpunit-8.0.0.phar",
                 "force-replace": true
             },
             "phpstan": {

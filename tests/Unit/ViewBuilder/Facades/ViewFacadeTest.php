@@ -14,7 +14,7 @@ use PHPUnit\Framework\TestCase;
  */
 class ViewFacadeTest extends TestCase
 {
-    public function setUp()
+    public function setUp(): void
     {
         if (defined('DEFAULT_FORM_THEME') === false) {
             define('DEFAULT_FORM_THEME', 'form_div_layout.html.twig');
@@ -82,8 +82,8 @@ class ViewFacadeTest extends TestCase
 
         $result = $viewFacade->render('index.html.twig');
 
-        $this->assertContains($title, $result);
-        $this->assertContains($url, $result);
+        $this->assertStringContainsString($title, $result);
+        $this->assertStringContainsString($url, $result);
         $this->assertRegExp('~<form~i', $result);
     }
 }

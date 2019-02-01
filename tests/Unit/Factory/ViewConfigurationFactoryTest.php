@@ -12,7 +12,7 @@ class ViewConfigurationFactoryTest extends TestCase
 
     private $applicationDirectory;
 
-    public function setUp()
+    protected function setUp(): void
     {
         $this->vendorDirectory = __DIR__ . '/../../../vendor';
         $this->applicationDirectory = __DIR__ . '/../../../';
@@ -28,22 +28,18 @@ class ViewConfigurationFactoryTest extends TestCase
         $this->assertInstanceOf(ViewConfiguration::class, $viewConfiguration);
     }
 
-    /**
-     * @expectedException \RuntimeException
-     */
     public function testFactoryCreateThrowExceptionForNonExistingApplicationDirectory()
     {
+        $this->expectException(\RuntimeException::class);
         ViewConfigurationFactory::create(
             $this->vendorDirectory,
             $this->applicationDirectory . 'not-existing-directory'
         );
     }
 
-    /**
-     * @expectedException \RuntimeException
-     */
     public function testFactoryCreateThrowExceptionForNonExistingVendorDirectory()
     {
+        $this->expectException(\RuntimeException::class);
         ViewConfigurationFactory::create(
             sprintf('%ss', $this->vendorDirectory),
             $this->applicationDirectory

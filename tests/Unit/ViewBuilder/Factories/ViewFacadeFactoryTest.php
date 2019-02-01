@@ -12,7 +12,7 @@ use PHPUnit\Framework\TestCase;
  */
 class ViewFacadeFactoryTest extends TestCase
 {
-    public function setUp()
+    public function setUp(): void
     {
         if (defined('DEFAULT_FORM_THEME') === false) {
             define('DEFAULT_FORM_THEME', 'form_div_layout.html.twig');
