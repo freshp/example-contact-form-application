@@ -7,9 +7,6 @@ use FreshP\ContactFormApplication\ViewBuilder\Facades\ViewFacade;
 use FreshP\ContactFormApplication\ViewBuilder\Factories\ViewFacadeFactory;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @package MoveElevator\ViewBuilderPackage\Factories
- */
 class ViewFacadeFactoryTest extends TestCase
 {
     public function setUp(): void
@@ -24,7 +21,7 @@ class ViewFacadeFactoryTest extends TestCase
         }
     }
 
-    public function testCreateViewFacade()
+    public function testCreateViewFacade(): void
     {
         $viewConfiguration = new ViewConfiguration(
             [
@@ -52,7 +49,7 @@ class ViewFacadeFactoryTest extends TestCase
         $this->assertInstanceOf(ViewFacade::class, $viewFacade);
     }
 
-    public function testCreateViewFacadeWithDifferentSettings()
+    public function testCreateViewFacadeWithDifferentSettings(): void
     {
         $viewConfiguration = new ViewConfiguration(
             [

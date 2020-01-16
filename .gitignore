@@ -4,3 +4,4 @@
 /node_modules
 /example/dist/*
 .phpunit.result.cache
+.php_cs.cache

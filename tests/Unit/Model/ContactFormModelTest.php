@@ -2,20 +2,17 @@
 
 namespace FreshP\ContactFormApplication\Tests\Unit\Model;
 
-use FreshP\ContactFormApplication\Tests\Fixtures\Model\ContactFormModelTrait;
+use FreshP\ContactFormApplication\Tests\Fixtures\Model\ContactFormModelFactory;
 use PHPUnit\Framework\TestCase;
 
 class ContactFormModelTest extends TestCase
 {
-    use ContactFormModelTrait;
-
     public function testInitAndGet()
     {
-        $model = $this->getContactFormModelObject();
+        $model = ContactFormModelFactory::create();
 
-        $this->assertEquals($this->contactFormModelName, $model->getName());
-        $this->assertEquals($this->contactFormModelEmail, $model->getEmail());
-        $this->assertEquals($this->contactFormModelMessage, $model->getMessage());
+        $this->assertEquals(ContactFormModelFactory::$contactFormModelName, $model->getName());
+        $this->assertEquals(ContactFormModelFactory::$contactFormModelEmail, $model->getEmail());
+        $this->assertEquals(ContactFormModelFactory::$contactFormModelMessage, $model->getMessage());
     }
-
 }

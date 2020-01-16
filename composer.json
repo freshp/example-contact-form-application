@@ -1,7 +1,7 @@
 {
     "name": "freshp/example-contact-form-application",
     "type": "project",
-    "description": "package to provide a contact form",
+    "description": "package to provide an example contact form",
     "autoload": {
         "psr-4": {
             "FreshP\\ContactFormApplication\\": "src/"
@@ -13,33 +13,52 @@
         }
     },
     "require": {
-        "php": ">=7.2",
-        "symfony/config": "~3.4",
-        "symfony/form": "~3.4",
-        "symfony/options-resolver": "~3.4",
-        "symfony/security-csrf": "~3.4",
-        "symfony/translation": "~3.4",
-        "symfony/twig-bridge": "~3.4",
-        "symfony/validator": "~3.4",
-        "twig/extensions": "~1.5",
-        "twig/twig": "~2.4"
+        "php": "^7.4",
+        "symfony/config": "^5.0",
+        "symfony/form": "^5.0",
+        "symfony/options-resolver": "^5.0",
+        "symfony/security-csrf": "^5.0",
+        "symfony/translation": "^5.0",
+        "symfony/twig-bridge": "^5.0",
+        "symfony/validator": "^5.0",
+        "twig/twig": "^3.0"
     },
     "require-dev": {
         "roave/security-advisories": "dev-master",
-        "tm/tooly-composer-script": "~1.2.6"
+        "slevomat/coding-standard": "^6.0",
+        "tm/tooly-composer-script": "^1.4"
     },
     "scripts": {
         "post-install-cmd": "Tooly\\ScriptHandler::installPharTools",
-        "post-update-cmd": "Tooly\\ScriptHandler::installPharTools"
+        "post-update-cmd": "Tooly\\ScriptHandler::installPharTools",
+        "quickcheck": [
+            "./vendor/bin/phpunit.phar -c ./phpunit.xml --testdox",
+            "./vendor/bin/phpstan.phar analyse -l max -c ./phpstan.neon ./src",
+            "./vendor/bin/phpcs-fixer.phar fix ./src",
+            "./vendor/bin/phpcs-fixer.phar fix ./tests",
+            "./vendor/bin/phpcs.phar ./src --standard=./ruleset.xml --extensions=php"
+        ]
     },
     "extra": {
         "tools": {
             "phpunit": {
-                "url": "https://phar.phpunit.de/phpunit-8.0.0.phar",
+                "url": "https://phar.phpunit.de/phpunit-8.3.5.phar",
+                "sign-url": "https://phar.phpunit.de/phpunit-8.3.5.phar.asc",
                 "force-replace": true
             },
             "phpstan": {
-                "url": "https://github.com/phpstan/phpstan/releases/download/0.11.1/phpstan.phar",
+                "url": "https://github.com/phpstan/phpstan/releases/download/0.11.19/phpstan.phar",
+                "sign-url": "https://github.com/phpstan/phpstan/releases/download/0.11.19/phpstan.phar.asc",
+                "force-replace": true
+            },
+            "phpcs-fixer": {
+                "url": "https://github.com/FriendsOfPHP/PHP-CS-Fixer/releases/download/v2.16.1/php-cs-fixer.phar",
+                "sign-url": "https://github.com/FriendsOfPHP/PHP-CS-Fixer/releases/download/v2.16.1/php-cs-fixer.phar.asc",
+                "force-replace": true
+            },
+            "phpcs": {
+                "url": "https://github.com/squizlabs/PHP_CodeSniffer/releases/download/3.5.2/phpcs.phar",
+                "sign-url": "https://github.com/squizlabs/PHP_CodeSniffer/releases/download/3.5.2/phpcs.phar.asc",
                 "force-replace": true
             }
         }

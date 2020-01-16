@@ -1,4 +1,4 @@
-<?php declare(strict_types=1);
+<?php declare(strict_types = 1);
 
 namespace FreshP\ContactFormApplication\FormType;
 
@@ -28,7 +28,7 @@ final class ContactFormType extends AbstractType implements DataMapperInterface
                     'trim' => true,
                     'constraints' => [
                         new NotBlank(),
-                    ]
+                    ],
                 ]
             )
             ->add(
@@ -39,8 +39,8 @@ final class ContactFormType extends AbstractType implements DataMapperInterface
                     'trim' => true,
                     'constraints' => [
                         new NotBlank(),
-                        new Email()
-                    ]
+                        new Email(),
+                    ],
                 ]
             )
             ->add(
@@ -51,7 +51,7 @@ final class ContactFormType extends AbstractType implements DataMapperInterface
                     'trim' => true,
                     'constraints' => [
                         new NotBlank(),
-                    ]
+                    ],
                 ]
             );
     }
@@ -64,22 +64,30 @@ final class ContactFormType extends AbstractType implements DataMapperInterface
         ]);
     }
 
-    public function mapDataToForms($data, $forms)
+    /**
+     * @param mixed $data
+     */
+    public function mapDataToForms($data, iterable $forms)
     {
         if (false === $data instanceof ContactFormModel) {
             return;
         }
-
-        $forms = iterator_to_array($forms);
+        $forms = iterator_to_array((function () use ($forms) {
+            yield from $forms;
+        })());
         $forms[AppStatics::CONTACT_FORM_NAME]->setData($data->getName());
         $forms[AppStatics::CONTACT_FORM_EMAIL]->setData($data->getEmail());
         $forms[AppStatics::CONTACT_FORM_MESSAGE]->setData($data->getMessage());
     }
 
-    public function mapFormsToData($forms, &$data)
+    /**
+     * @param mixed $data
+     */
+    public function mapFormsToData(iterable $forms, &$data)
     {
-        $forms = iterator_to_array($forms);
-
+        $forms = iterator_to_array((function () use ($forms) {
+            yield from $forms;
+        })());
         if (true === empty($forms[AppStatics::CONTACT_FORM_NAME]->getData())
             || true === empty($forms[AppStatics::CONTACT_FORM_EMAIL]->getData())
             || true === empty($forms[AppStatics::CONTACT_FORM_MESSAGE]->getData())

@@ -1,5 +1,8 @@
 <?php
 
+use FreshP\ContactFormApplication\Factory\ViewConfigurationFactory;
+use FreshP\ContactFormApplication\ViewBuilder\Factories\ViewFacadeFactory;
+
 require __DIR__ . '/../vendor/autoload.php';
 
 $language = 'de';
@@ -9,13 +12,13 @@ if (true === isset($_GET['L'])
     $language = 'en';
 }
 
-$viewConfiguration = \FreshP\ContactFormApplication\Factory\ViewConfigurationFactory::create(
+$viewConfiguration = ViewConfigurationFactory::create(
     dirname(__DIR__) . '/vendor',
     __DIR__ . '/..',
     $language
 );
 
-$viewFacade = \FreshP\ContactFormApplication\ViewBuilder\Factories\ViewFacadeFactory::create($viewConfiguration);
+$viewFacade = ViewFacadeFactory::create($viewConfiguration);
 $viewFacade->getView()->enableDebug();
 
 echo '<link rel="stylesheet" href="dist/css/bootstrap.css"/>';

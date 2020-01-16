@@ -4,14 +4,11 @@ namespace FreshP\ContactFormApplication\Tests\Unit\ViewBuilder\Facades;
 
 use FreshP\ContactFormApplication\ViewBuilder\Configurations\ViewConfiguration;
 use FreshP\ContactFormApplication\ViewBuilder\Factories\ViewFacadeFactory;
+use PHPUnit\Framework\TestCase;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
-use PHPUnit\Framework\TestCase;
 
-/**
- * @package MoveElevator\ViewBuilderPackage\Factories
- */
 class ViewFacadeTest extends TestCase
 {
     public function setUp(): void
@@ -33,11 +30,7 @@ class ViewFacadeTest extends TestCase
         @session_start();
     }
 
-    /**
-     * @SuppressWarnings(PHPMD.StaticAccess)
-     * @SuppressWarnings(PHPMD.ExcessiveMethodLength)
-     */
-    public function testCreateFacadeAndRenderView()
+    public function testCreateFacadeAndRenderView(): void
     {
         $viewConfiguration = new ViewConfiguration(
             [
@@ -74,7 +67,7 @@ class ViewFacadeTest extends TestCase
             [
                 'url' => $url,
                 'title' => $title,
-                'form' => 'foo bar baz'
+                'form' => 'foo bar baz',
             ]
         );
 

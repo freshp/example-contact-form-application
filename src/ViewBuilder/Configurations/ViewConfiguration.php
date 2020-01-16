@@ -1,20 +1,15 @@
-<?php declare(strict_types=1);
+<?php declare(strict_types = 1);
 
 namespace FreshP\ContactFormApplication\ViewBuilder\Configurations;
 
-class ViewConfiguration implements ViewConfigurationInterface
+final class ViewConfiguration implements ViewConfigurationInterface
 {
-    protected $templateStoragePaths = [];
-
-    protected $formElementsTheme = '';
-
-    protected $locale = '';
-
-    protected $translationResources = [];
-
-    protected $debug = false;
-
-    protected $cachePath = '';
+    protected array $templateStoragePaths = [];
+    protected string $formElementsTheme = '';
+    protected string $locale = '';
+    protected array $translationResources = [];
+    protected bool $debug = false;
+    protected string $cachePath = '';
 
     public function __construct(
         array $templateStoragePaths,
@@ -50,11 +45,11 @@ class ViewConfiguration implements ViewConfigurationInterface
         string $path,
         string $locale,
         string $domain = 'validators'
-    ): TranslationConfigurationInterface {
+    ): self {
         $this->translationResources[] = [
             'path' => $path,
             'locale' => $locale,
-            'domain' => $domain
+            'domain' => $domain,
         ];
 
         return $this;

@@ -1,12 +1,12 @@
-<?php declare(strict_types=1);
+<?php declare(strict_types = 1);
 
 namespace FreshP\ContactFormApplication\Model;
 
 final class ContactFormModel
 {
-    private $name;
-    private $email;
-    private $message;
+    private string $name;
+    private string $email;
+    private string $message;
 
     public function __construct(string $name, string $email, string $message)
     {
