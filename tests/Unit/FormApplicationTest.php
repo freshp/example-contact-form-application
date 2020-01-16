@@ -6,14 +6,12 @@ use FreshP\ContactFormApplication\Factory\ViewConfigurationFactory;
 use FreshP\ContactFormApplication\FormApplication;
 use FreshP\ContactFormApplication\Model\ContactFormModel;
 use FreshP\ContactFormApplication\Statics\AppStatics;
-use FreshP\ContactFormApplication\Tests\Fixtures\Model\ContactFormModelTrait;
+use FreshP\ContactFormApplication\Tests\Fixtures\Model\ContactFormModelFactory;
 use FreshP\ContactFormApplication\ViewBuilder\Factories\ViewFacadeFactory;
 use PHPUnit\Framework\TestCase;
 
 class FormApplicationTest extends TestCase
 {
-    use ContactFormModelTrait;
-
     public function testExecuteFormSuccessful()
     {
         $viewConfiguration = ViewConfigurationFactory::create(
@@ -23,7 +21,6 @@ class FormApplicationTest extends TestCase
 
         $viewFacade = ViewFacadeFactory::create($viewConfiguration);
         $formApplication = new FormApplication($viewFacade);
-        $formApplication->validate();
         $htmlOutput = $formApplication->generateHtml('proceed.php');
 
         $this->assertRegExp('~<form~i', $htmlOutput);
@@ -31,9 +28,9 @@ class FormApplicationTest extends TestCase
         $errors = $formApplication->validate();
 
         $formData = [
-            AppStatics::CONTACT_FORM_NAME => $this->contactFormModelName,
-            AppStatics::CONTACT_FORM_EMAIL => $this->contactFormModelEmail,
-            AppStatics::CONTACT_FORM_MESSAGE => $this->contactFormModelMessage,
+            AppStatics::CONTACT_FORM_NAME => ContactFormModelFactory::$contactFormModelName,
+            AppStatics::CONTACT_FORM_EMAIL => ContactFormModelFactory::$contactFormModelEmail,
+            AppStatics::CONTACT_FORM_MESSAGE => ContactFormModelFactory::$contactFormModelMessage,
         ];
 
         $errors->getForm()->submit($formData);
@@ -91,35 +88,35 @@ class FormApplicationTest extends TestCase
         return [
             [
                 [
-                    AppStatics::CONTACT_FORM_EMAIL => $this->contactFormModelEmail,
-                    AppStatics::CONTACT_FORM_MESSAGE => $this->contactFormModelMessage,
+                    AppStatics::CONTACT_FORM_EMAIL => ContactFormModelFactory::$contactFormModelEmail,
+                    AppStatics::CONTACT_FORM_MESSAGE => ContactFormModelFactory::$contactFormModelMessage,
                 ],
             ],
             [
                 [
-                    AppStatics::CONTACT_FORM_NAME => $this->contactFormModelName,
-                    AppStatics::CONTACT_FORM_MESSAGE => $this->contactFormModelMessage,
+                    AppStatics::CONTACT_FORM_NAME => ContactFormModelFactory::$contactFormModelName,
+                    AppStatics::CONTACT_FORM_MESSAGE => ContactFormModelFactory::$contactFormModelMessage,
                 ],
             ],
             [
                 [
-                    AppStatics::CONTACT_FORM_NAME => $this->contactFormModelName,
-                    AppStatics::CONTACT_FORM_EMAIL => $this->contactFormModelEmail,
+                    AppStatics::CONTACT_FORM_NAME => ContactFormModelFactory::$contactFormModelName,
+                    AppStatics::CONTACT_FORM_EMAIL => ContactFormModelFactory::$contactFormModelEmail,
                 ],
             ],
             [
                 [
-                    AppStatics::CONTACT_FORM_NAME => $this->contactFormModelName,
+                    AppStatics::CONTACT_FORM_NAME => ContactFormModelFactory::$contactFormModelName,
                 ],
             ],
             [
                 [
-                    AppStatics::CONTACT_FORM_EMAIL => $this->contactFormModelEmail,
+                    AppStatics::CONTACT_FORM_EMAIL => ContactFormModelFactory::$contactFormModelEmail,
                 ],
             ],
             [
                 [
-                    AppStatics::CONTACT_FORM_MESSAGE => $this->contactFormModelMessage,
+                    AppStatics::CONTACT_FORM_MESSAGE => ContactFormModelFactory::$contactFormModelMessage,
                 ],
             ],
             [[]],

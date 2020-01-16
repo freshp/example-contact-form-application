@@ -44,9 +44,4 @@ gulp.task( 'external-scripts', function() {
 } );
 
 gulp.task( 'clean', () => del( [ 'example/dist' ] ) );
-gulp.task( 'default', [ 'clean' ], function() {
-	runSequence(
-		'styles',
-		'external-scripts',
-	);
-} );
+gulp.task( 'default', gulp.series( 'clean', 'external-scripts', 'styles' ) );

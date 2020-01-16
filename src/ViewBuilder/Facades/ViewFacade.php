@@ -1,35 +1,23 @@
-<?php declare(strict_types=1);
+<?php declare(strict_types = 1);
 
 namespace FreshP\ContactFormApplication\ViewBuilder\Facades;
 
-use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\Form\FormFactoryBuilderInterface;
+use Symfony\Component\Form\FormFactoryInterface;
+use Twig\Environment;
+use Twig\Error\LoaderError;
+use Twig\Error\RuntimeError;
+use Twig\Error\SyntaxError;
 
-class ViewFacade implements ViewFacadeInterface
+final class ViewFacade implements ViewFacadeInterface
 {
-    /**
-     * @var FormFactoryBuilderInterface
-     */
-    private $formFactoryBuilder;
-
-    /**
-     * @var \Twig_Environment
-     */
-    private $view;
-
-    /**
-     * @var array
-     */
-    private $content;
+    private FormFactoryBuilderInterface $formFactoryBuilder;
+    private Environment $view;
+    private array $content;
 
     public function getFormFactory(): FormFactoryInterface
     {
         return $this->getFormFactoryBuilder()->getFormFactory();
-    }
-
-    public function setFormFactoryBuilder(FormFactoryBuilderInterface $formFactoryBuilder): void
-    {
-        $this->formFactoryBuilder = $formFactoryBuilder;
     }
 
     public function getFormFactoryBuilder(): FormFactoryBuilderInterface
@@ -37,14 +25,9 @@ class ViewFacade implements ViewFacadeInterface
         return $this->formFactoryBuilder;
     }
 
-    public function getView(): \Twig_Environment
+    public function setFormFactoryBuilder(FormFactoryBuilderInterface $formFactoryBuilder): void
     {
-        return $this->view;
-    }
-
-    public function setView(\Twig_Environment $view): void
-    {
-        $this->view = $view;
+        $this->formFactoryBuilder = $formFactoryBuilder;
     }
 
     public function setContent(array $content): void
@@ -58,12 +41,22 @@ class ViewFacade implements ViewFacadeInterface
     }
 
     /**
-     * @throws \Twig_Error_Loader
-     * @throws \Twig_Error_Runtime
-     * @throws \Twig_Error_Syntax
+     * @throws LoaderError
+     * @throws RuntimeError
+     * @throws SyntaxError
      */
     public function render(string $templateName): string
     {
         return $this->getView()->render($templateName, $this->content);
+    }
+
+    public function getView(): Environment
+    {
+        return $this->view;
+    }
+
+    public function setView(Environment $view): void
+    {
+        $this->view = $view;
     }
 }

@@ -1,28 +1,28 @@
 <?xml version="1.0"?>
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
-	<file source-language="de" datatype="plaintext" original="file.ext">
-		<body>
-			<trans-unit id="contact-form">
-				<source>contact-form</source>
-				<target>Kontaktformular</target>
-			</trans-unit>
-			<trans-unit id="send">
-				<source>send</source>
-				<target>Absenden</target>
-			</trans-unit>
+    <file source-language="de" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="contact-form">
+                <source>contact-form</source>
+                <target>Kontaktformular</target>
+            </trans-unit>
+            <trans-unit id="send">
+                <source>send</source>
+                <target>Absenden</target>
+            </trans-unit>
 
-			<trans-unit id="Name">
-				<source>Name</source>
-				<target>Name</target>
-			</trans-unit>
-			<trans-unit id="Email">
-				<source>Email</source>
-				<target>E-Mail</target>
-			</trans-unit>
-			<trans-unit id="Message">
-				<source>Message</source>
-				<target>Ihre Nachricht</target>
-			</trans-unit>
-		</body>
-	</file>
+            <trans-unit id="Name">
+                <source>Name</source>
+                <target>Name</target>
+            </trans-unit>
+            <trans-unit id="Email">
+                <source>Email</source>
+                <target>E-Mail</target>
+            </trans-unit>
+            <trans-unit id="Message">
+                <source>Message</source>
+                <target>Ihre Nachricht</target>
+            </trans-unit>
+        </body>
+    </file>
 </xliff>

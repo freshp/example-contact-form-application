@@ -1,8 +1,9 @@
-<?php declare(strict_types=1);
+<?php declare(strict_types = 1);
 
 namespace FreshP\ContactFormApplication\Factory;
 
 use FreshP\ContactFormApplication\ViewBuilder\Configurations\ViewConfiguration;
+use RuntimeException;
 
 final class ViewConfigurationFactory
 {
@@ -40,11 +41,11 @@ final class ViewConfigurationFactory
     private static function checkDirectories(string $vendorDirectory, string $formDirectory): void
     {
         if (false === is_dir($vendorDirectory)) {
-            throw new \RuntimeException('given vendor path could not be found ' . $vendorDirectory);
+            throw new RuntimeException('given vendor path could not be found ' . $vendorDirectory);
         }
 
         if (false === is_dir($formDirectory)) {
-            throw new \RuntimeException('given package path could not be found ' . $formDirectory);
+            throw new RuntimeException('given package path could not be found ' . $formDirectory);
         }
     }
 }

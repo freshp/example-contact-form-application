@@ -1,4 +1,4 @@
-<?php declare(strict_types=1);
+<?php declare(strict_types = 1);
 
 namespace FreshP\ContactFormApplication\ViewBuilder\Factories;
 
@@ -9,7 +9,7 @@ use Symfony\Component\Form\Extension\Validator\ValidatorExtension;
 use Symfony\Component\Form\Forms;
 use Symfony\Component\Validator\Validation;
 
-class ViewFacadeFactory
+final class ViewFacadeFactory
 {
     public static function create(ViewConfigurationInterface $viewConfiguration): ViewFacade
     {

@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace FreshP\ContactFormApplication\ViewBuilder\Configurations;
 
@@ -13,4 +13,6 @@ interface TranslationConfigurationInterface
     public function getLocale(): string;
 
     public function getTranslationResources(): array;
+
+    public function clearTranslationResources(): void;
 }

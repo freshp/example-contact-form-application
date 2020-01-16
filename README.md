@@ -38,7 +38,16 @@ Run each command in the project root directory.
 ```
 
 ### Execute PHPSTAN checks
-
 ```
-./vendor/bin/phpstan.phar analyse -l max src/
+./vendor/bin/phpstan.phar analyse -l max -c ./phpstan.neon src/
+```
+
+### Execute PHPCS-fixer
+```
+./vendor/bin/phpcs-fixer.phar fix ./src
+```
+
+### Execute PHPCS checks
+```
+./vendor/bin/phpcs.phar ./src --standard=./ruleset.xml --extensions=php
 ```

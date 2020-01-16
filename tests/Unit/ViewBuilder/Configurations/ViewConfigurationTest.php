@@ -5,12 +5,9 @@ namespace FreshP\ContactFormApplication\Tests\Unit\ViewBuilder\Configurations;
 use FreshP\ContactFormApplication\ViewBuilder\Configurations\ViewConfiguration;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @package MoveElevator\ViewBuilderPackage\Tests\Configurations
- */
 class ViewConfigurationTest extends TestCase
 {
-    public function testInitializeAndGetConfiguration()
+    public function testInitializeAndGetConfiguration(): void
     {
         $viewConfiguration = new ViewConfiguration(
             [__DIR__],
@@ -35,7 +32,7 @@ class ViewConfigurationTest extends TestCase
         $this->assertEquals($cachePath, $viewConfiguration->getCachePath());
     }
 
-    public function testOverwriteAndGetConfiguration()
+    public function testOverwriteAndGetConfiguration(): void
     {
         $viewConfiguration = new ViewConfiguration(
             [__DIR__],
@@ -50,7 +47,7 @@ class ViewConfigurationTest extends TestCase
         $this->assertEquals([], $viewConfiguration->getTemplateStoragePaths());
     }
 
-    public function testAddAndGetTranslationResource()
+    public function testAddAndGetTranslationResource(): void
     {
         $viewConfiguration = new ViewConfiguration(
             [__DIR__],
@@ -69,13 +66,13 @@ class ViewConfigurationTest extends TestCase
                 [
                     'path' => 'translation.path.xlf',
                     'locale' => 'de',
-                    'domain' => 'translationdomain'
+                    'domain' => 'translationdomain',
                 ],
                 [
                     'path' => 'translation.validation.path.xlf',
                     'locale' => 'de',
-                    'domain' => 'validators'
-                ]
+                    'domain' => 'validators',
+                ],
             ],
             $resources
         );

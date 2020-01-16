@@ -1,15 +1,17 @@
-<?php declare(strict_types=1);
+<?php declare(strict_types = 1);
 
 namespace FreshP\ContactFormApplication\ViewBuilder\Factories;
 
 use FreshP\ContactFormApplication\ViewBuilder\Configurations\ViewConfigurationInterface;
+use Twig\Environment;
+use Twig\Loader\FilesystemLoader;
 
-class TwigEnvironmentFactory
+final class TwigEnvironmentFactory
 {
-    public static function create(ViewConfigurationInterface $viewConfiguration): \Twig_Environment
+    public static function create(ViewConfigurationInterface $viewConfiguration): Environment
     {
-        $twig = new \Twig_Environment(
-            new \Twig_Loader_Filesystem($viewConfiguration->getTemplateStoragePaths())
+        $twig = new Environment(
+            new FilesystemLoader($viewConfiguration->getTemplateStoragePaths())
         );
 
         if ('' !== $viewConfiguration->getCachePath()) {
